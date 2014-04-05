@@ -24,6 +24,7 @@ int motorspeed= 1900;
 Servo servo_frontmotor; 
 Servo servo_basemotor; 
 Servo servo_lateral; 
+Servo servo_lateral2;
 
 //PIN DECLARATIONS
 const int right_lightsensor = A0; 
@@ -32,6 +33,7 @@ const int right_tracker = A4;
 const int left_tracker = A5; 
 const int front_motor = 8; 
 const int lateral_motor = 9;
+const int lateral_motor2 = 10;
 const int ultrasonic_output_data = 12; 
 const int ultrasonic_input_ping = 13;
 
@@ -84,6 +86,8 @@ void setup()
   
   pinMode(lateral_motor, OUTPUT); 
   servo_lateral.attach(lateral_motor);
+  pinMode(lateral_motor2, OUTPUT); 
+  servo_lateral2.attach(lateral_motor2);
  
   pinMode(left_tracker, INPUT);
   pinMode(right_tracker, INPUT);
@@ -94,18 +98,24 @@ void setup()
 //check for line trackers
 void loop()
 {
-  for (int i = 0; i++; i < 9)
+  for (int i = 0; i < 9; i++)
   {
-  servo_lateral.writeMicroseconds(1900);
+  servo_lateral.writeMicroseconds(1950);
+  servo_lateral2.writeMicroseconds(1950);
   delay(500);
   servo_lateral.writeMicroseconds(1500);
+  servo_lateral2.writeMicroseconds(1950);
   delay(100);
   }
-  for (int i = 0; i++; i < 9)
+  for (int i = 0; i < 9; i++)
   {
-  servo_lateral.writeMicroseconds(1100);
+  servo_lateral.writeMicroseconds(1050);
+    servo_lateral2.writeMicroseconds(1050);
+
   delay(500);
   servo_lateral.writeMicroseconds(1500);
+    servo_lateral2.writeMicroseconds(1050);
+
   delay(100);
   }
 }
