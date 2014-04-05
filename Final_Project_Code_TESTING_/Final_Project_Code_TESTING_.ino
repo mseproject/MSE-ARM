@@ -88,8 +88,42 @@ void setup()
   pinMode (left_lightsensor, INPUT); 
   pinMode (right_lightsensor, INPUT); 
 }
-
+//check for line trackers
 void loop()
+{
+                    right = analogRead(A4); 
+                    left = analogRead(A5); 
+                    Serial.println("Right");
+                    Serial.println(right);
+                    Serial.println("Left");
+                    Serial.println(left);
+                    
+                    
+                    if ((right<150) && (left<150))
+                    {
+                      mailbox1 = true; 
+                      break;
+                    }
+                    
+                    else if ((right<150) && (left>500))
+                    {
+                      mailbox2 = true; 
+                      break; 
+                    }
+                    
+                    else if ((right>500) && (left<150))
+                    {
+                      mailbox3 = true; 
+                      break; 
+                    }
+                    
+                    else if ((right>500)&&(left>500))
+                    {
+                      mailbox4 = true; 
+                      break; 
+                    }
+}
+void blank()
 { 
 
  switch (stage) 
