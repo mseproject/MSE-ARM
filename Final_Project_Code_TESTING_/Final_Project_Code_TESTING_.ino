@@ -15,6 +15,9 @@ boolean mailbox2 = false;
 boolean mailbox3 = false; 
 boolean mailbox4 = false; 
 int flag = 0; 
+int incoming;
+int outgoing;
+
 
 
 //SERVOS
@@ -99,28 +102,19 @@ void loop()
                     Serial.println(left);
                     
                     
-                    if ((right<150) && (left<150))
+                    if (right < 50 && left < 50)
                     {
-                      mailbox1 = true; 
-                      break;
+                      Serial.println("Room 1");
                     }
                     
-                    else if ((right<150) && (left>500))
+                    if (right > 400 && left < 50)
                     {
-                      mailbox2 = true; 
-                      break; 
+                      Serial.println("Room 2/3");
                     }
                     
-                    else if ((right>500) && (left<150))
+                    if (((right > 60)&&(right < 200)) && ((left > 60)&&(left < 200)))
                     {
-                      mailbox3 = true; 
-                      break; 
-                    }
-                    
-                    else if ((right>500)&&(left>500))
-                    {
-                      mailbox4 = true; 
-                      break; 
+                      Serial.println("No mail");
                     }
 }
 void blank()
@@ -177,7 +171,7 @@ int shit;
          {
            servo_lateral.writeMicroseconds(1800);
            delay(500); 
-           servo.lateral.writeMicroseconds(1500); 
+           servo_lateral.writeMicroseconds(1500); 
            distance = Ping(); 
          }
          while(distance>1500);
