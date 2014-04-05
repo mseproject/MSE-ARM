@@ -6,7 +6,7 @@ int stage = 0;
 int check=0; 
 int incoming = 0; 
 int outgoing = 0; 
-
+int test = 0;
 
 
 //SERVOS
