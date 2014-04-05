@@ -23,6 +23,7 @@ const int right_tracker = A4;
 const int left_tracker = A5; 
 const int front_motor = 8; 
 const int lateral_motor = 9;
+
 const int ultrasonic_output_data = 12; 
 const int ultrasonic_input_ping = 13;
 
@@ -74,6 +75,8 @@ void setup()
 
   pinMode (left_lightsensor, INPUT); 
   pinMode (right_lightsensor, INPUT); 
+  
+  
 }
 
 void loop()
