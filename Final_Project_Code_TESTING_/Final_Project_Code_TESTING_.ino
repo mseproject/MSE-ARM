@@ -17,7 +17,7 @@ boolean mailbox4 = false;
 int flag = 0; 
 int incoming;
 int outgoing;
-
+int motorspeed= 1900;
 
 
 //SERVOS
@@ -94,6 +94,29 @@ void setup()
 //check for line trackers
 void loop()
 {
+  for (int i = 0; i++; i < 9)
+  {
+  servo_lateral.writeMicroseconds(1900);
+  delay(500);
+  servo_lateral.writeMicroseconds(1500);
+  delay(100);
+  }
+  for (int i = 0; i++; i < 9)
+  {
+  servo_lateral.writeMicroseconds(1100);
+  delay(500);
+  servo_lateral.writeMicroseconds(1500);
+  delay(100);
+  }
+}
+
+
+void line_extender()
+{
+  
+  
+                    servo_frontmotor.writeMicroseconds(motorspeed);
+                  //delay(5000);  
                     right = analogRead(A4); 
                     left = analogRead(A5); 
                     Serial.println("Right");
@@ -105,16 +128,22 @@ void loop()
                     if (right < 50 && left < 50)
                     {
                       Serial.println("Room 1");
+                      motorspeed = 1100;
+                      delay(5000);
                     }
                     
                     if (right > 400 && left < 50)
                     {
                       Serial.println("Room 2/3");
+                      motorspeed = 1100;
+                      delay(5000);
+                      
                     }
                     
-                    if (((right > 60)&&(right < 200)) && ((left > 60)&&(left < 200)))
+                    if (((right > 60)&&(right < 400)) && ((left > 60)&&(left < 400)))
                     {
                       Serial.println("No mail");
+                      motorspeed = 1900;
                     }
 }
 void blank()
