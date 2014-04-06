@@ -108,8 +108,6 @@ int moveleft()
     delay(500);
    }
    while ( (brightness_right >= 15) && (brightness_left<=40) && (Ping()<=2000) );
-   leftposition = 1; 
-     
 }
 
 int Ping() 
